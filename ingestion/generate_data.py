@@ -4,7 +4,8 @@ import os
 from datetime import datetime, timedelta
 
 random.seed(42)
-os.makedirs("data/raw", exist_ok=True)
+base_path = "/mnt/c/Users/megha/healthcare-analytics-pipeline"
+os.makedirs(f"{base_path}/data/raw", exist_ok=True)
 
 # Generate synthetic patient data
 states = ['TX', 'CA', 'NY', 'FL', 'IL', 'PA', 'OH', 'GA', 'NC', 'MI']
@@ -28,7 +29,6 @@ for i in range(10000):
     })
 
 df = pd.DataFrame(patients)
-df.to_csv('data/raw/patients.csv', index=False)
+df.to_csv(f'{base_path}/data/raw/patients.csv', index=False)
 print(f"Generated {len(df)} patient records")
-print(df.head())
 print("Done!")
